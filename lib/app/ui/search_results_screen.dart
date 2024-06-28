@@ -5,7 +5,10 @@ import 'package:rick_and_morty/app/widgets/character_widget.dart';
 class SearchResultsScreen extends StatelessWidget {
   final List<Character> displayedCharacters;
 
-  const SearchResultsScreen({super.key, required this.displayedCharacters});
+  const SearchResultsScreen({
+    Key? key,
+    required this.displayedCharacters,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +19,20 @@ class SearchResultsScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Center(
-              child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: displayedCharacters
-                    .map((e) => CharacterWidget(character: e))
-                    .toList(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: displayedCharacters
+                        .map((character) => CharacterWidget(character: character))
+                        .toList(),
+                  ),
+                ),
               ),
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            
           ],
         ),
       ),

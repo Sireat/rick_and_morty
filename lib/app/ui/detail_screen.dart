@@ -26,7 +26,7 @@ class DetailScreen extends StatelessWidget {
             Center(
               child: CachedNetworkImage(
                 imageUrl: character.image,
-                placeholder: (context, url) => CircularProgressIndicator(),
+                placeholder: (context, url) => const CircularProgressIndicator(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
                 height: 200,
                 width: 200,
